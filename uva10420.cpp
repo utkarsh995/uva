@@ -1,17 +1,20 @@
 #include<iostream>
 #include<map>
+#include<string>
+#include <sstream>
 using namespace std;
 
 int main(){
     freopen("inp10420.txt","r",stdin);
     int T;
     scanf("%d\n",&T);
-    map<char*,int> mp;
+    map<string,int> mp;
     for(int t=0;t<T;t++){
-        char line[77];
-        fgets(line,75,stdin);
-        char country[75];
-        sscanf(line,"%s",country);
+        string line;
+        getline(cin,line);
+        stringstream ss(line);
+        string country;
+        ss>>country;
         if(mp.find(country)==mp.end()){
             mp[country]=1;
         }
@@ -20,8 +23,7 @@ int main(){
         }
     }
 
-    for(map<char*,int>::iterator it=mp.begin();it!=mp.end();it++){
-        printf(it->first);
-        printf(" %d\n",it->second);
+    for(map<string,int>::iterator it=mp.begin();it!=mp.end();it++){
+        cout<<(it->first)<<" "<<it->second<<endl;
     }
 }
