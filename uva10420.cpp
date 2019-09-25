@@ -1,7 +1,5 @@
 #include<iostream>
 #include<map>
-#include<string>
-#include <sstream>
 using namespace std;
 
 int main(){
@@ -10,11 +8,10 @@ int main(){
     scanf("%d\n",&T);
     map<string,int> mp;
     for(int t=0;t<T;t++){
-        string line;
-        getline(cin,line);
-        stringstream ss(line);
-        string country;
-        ss>>country;
+        char line[77];
+        fgets(line,75,stdin);
+        char country[75];
+        sscanf(line,"%s",country);
         if(mp.find(country)==mp.end()){
             mp[country]=1;
         }
@@ -24,6 +21,7 @@ int main(){
     }
 
     for(map<string,int>::iterator it=mp.begin();it!=mp.end();it++){
-        cout<<(it->first)<<" "<<it->second<<endl;
+        cout<<(it->first);
+        printf(" %d\n",it->second);
     }
 }
